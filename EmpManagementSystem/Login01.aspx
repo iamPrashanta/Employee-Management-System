@@ -9,7 +9,7 @@
 <body>
     <form id="login01" runat="server">
         <div>
-            <h2>User Login</h2>
+            <h2>Admin/User Login</h2>
 
             <asp:Label ID="Label1" runat="server" Text="Phone Number:"></asp:Label>
             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>

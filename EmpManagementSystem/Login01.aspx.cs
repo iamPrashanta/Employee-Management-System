@@ -29,7 +29,7 @@ namespace EmpManagementSystem
             string connectionString = ConfigurationManager.ConnectionStrings["conn"].ToString();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "SELECT COUNT(*) FROM users WHERE phone = @Phone AND passwd = @Password";
+                string query = "SELECT id,role_type,username FROM users WHERE phone = @Phone AND passwd = @Password";
 
                 using (SqlCommand command = new SqlCommand(query, conn))
                 {
@@ -39,27 +39,62 @@ namespace EmpManagementSystem
                     try
                     {
                         conn.Open();
-                        int count = Convert.ToInt32(command.ExecuteScalar());
-
-                        if (count > 0)
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            ResultLabel.Text = "Login successful. Redirecting...";
-                            ResultLabel.ForeColor = System.Drawing.Color.Green;
+                            if (reader.Read())
+                            {
+                                try
+                                {
+                                    // Attempt to retrieve userId and roleType
+                                    string roleType = reader["role_type"].ToString();
+                                    string username = reader["username"].ToString();
 
-                            // Redirect to a home page or dashboard
-                            Response.Redirect("UserDash01.aspx");
+                                    Session["RoleType"] = roleType;
+                                    Session["username"] = username;
+
+                                    ResultLabel.Text = "Login successful. Redirecting...";
+                                    ResultLabel.ForeColor = System.Drawing.Color.Green;
+
+                                    // Redirect based on roleType
+                                    if (roleType == "emp")
+                                    {
+                                        Response.Redirect("UserDash01.aspx");
+                                    }
+                                    else if (roleType == "admin")
+                                    {
+                                        Response.Redirect("AdminDash01.aspx");
+                                    }
+                                    else
+                                    {
+                                        ResultLabel.Text = "Invalid role. Please contact the administrator.";
+                                        ResultLabel.ForeColor = System.Drawing.Color.Red;
+                                    }
+                                }
+                                catch (InvalidCastException ex)
+                                {
+                                    // Handle cases where 'id' or 'roleType' retrieval fails
+                                    ResultLabel.Text = $"Error retrieving user data (id/roleType issue): {ex.Message}";
+                                    ResultLabel.ForeColor = System.Drawing.Color.Red;
+                                }
+                            }
+                            else
+                            {
+                                ResultLabel.Text = "Invalid phone number or password.";
+                                ResultLabel.ForeColor = System.Drawing.Color.Red;
+                            }
                         }
-                        else
-                        {
-                            ResultLabel.Text = "Invalid phone number or password.";
-                            ResultLabel.ForeColor = System.Drawing.Color.Red;
-                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        ResultLabel.Text = $"Database error: {ex.Message}";
+                        ResultLabel.ForeColor = System.Drawing.Color.Red;
                     }
                     catch (Exception ex)
                     {
-                        ResultLabel.Text = "Error: " + ex.Message;
+                        ResultLabel.Text = $"An unexpected error occurred: {ex.Message}";
                         ResultLabel.ForeColor = System.Drawing.Color.Red;
                     }
+
                 }
             }
         }

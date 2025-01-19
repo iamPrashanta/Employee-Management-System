@@ -7,8 +7,13 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
+    <form id="adminDashboardForm" runat="server">
+        <h2><asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label></h2>
+
+        <div class="button-container">
+            <a href="ChangePassword.aspx">Change Password</a>
+            <br />
+            <a href="Logout.aspx">Logout</a>
         </div>
     </form>
 </body>

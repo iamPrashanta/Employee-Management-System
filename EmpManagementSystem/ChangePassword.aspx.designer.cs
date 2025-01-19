@@ -11,7 +11,7 @@ namespace EmpManagementSystem
 {
 
 
-    public partial class AdminLogin01
+    public partial class ChangePassword
     {
 
         /// <summary>

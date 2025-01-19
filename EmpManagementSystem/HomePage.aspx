@@ -37,6 +37,7 @@
     <p>Please select an option below to proceed:</p>
     <div class="button-container">
         <a href="Login01.aspx">Login</a>
+        <br />
         <a href="Register01.aspx">Register</a>
     </div>
 </body>

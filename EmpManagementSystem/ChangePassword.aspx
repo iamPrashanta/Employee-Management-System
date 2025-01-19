@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminLogin01.aspx.cs" Inherits="EmpManagementSystem.AdminLogin01" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="EmpManagementSystem.ChangePassword" %>
 
 <!DOCTYPE html>
 

@@ -11,7 +11,19 @@ namespace EmpManagementSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["username"] == null || string.IsNullOrEmpty(Session["username"].ToString()))
+            {
+                Response.Redirect("Login01.aspx");
+            }
+            else
+            {
+                String username = Session["username"].ToString();
+                System.Diagnostics.Debug.WriteLine("Session username: " + Session["username"]);
+                if (!IsPostBack)
+                {
+                    lblWelcome.Text = $"Welcome, {username}!";
+                }
+            }
         }
     }
 }

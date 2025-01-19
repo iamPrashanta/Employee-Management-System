@@ -68,10 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminDash01.aspx" />
-    <Content Include="AdminLogin01.aspx" />
+    <Content Include="ChangePassword.aspx" />
     <Content Include="Global.asax" />
     <Content Include="HomePage.aspx" />
     <Content Include="Login01.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="Register01.aspx" />
     <Content Include="UserDash01.aspx" />
     <Content Include="Web.config" />
@@ -84,12 +85,12 @@
     <Compile Include="AdminDash01.aspx.designer.cs">
       <DependentUpon>AdminDash01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminLogin01.aspx.cs">
-      <DependentUpon>AdminLogin01.aspx</DependentUpon>
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminLogin01.aspx.designer.cs">
-      <DependentUpon>AdminLogin01.aspx</DependentUpon>
+    <Compile Include="ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -107,6 +108,13 @@
     </Compile>
     <Compile Include="Login01.aspx.designer.cs">
       <DependentUpon>Login01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register01.aspx.cs">
