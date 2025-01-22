@@ -74,6 +74,7 @@
     <Content Include="Login01.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Register01.aspx" />
+    <Content Include="sql\sql.html" />
     <Content Include="UserDash01.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
